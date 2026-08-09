@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +16,14 @@
       --pink: #f300ee;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html, body { min-height: 100%; }
+    html,
+    body {
+      min-height: 100%;
+    }
 
     body {
       margin: 0;
@@ -70,7 +76,7 @@
       width: min(100%, 70rem);
       margin: auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(17rem, .58fr);
+      grid-template-columns: minmax(0, .9fr) minmax(20rem, 1.1fr);
       align-items: center;
       gap: clamp(3rem, 8vw, 8rem);
       padding: 5rem 0;
@@ -126,6 +132,42 @@
       animation: rise .75s .16s ease-out both;
     }
 
+    .video-frame {
+      width: min(100%, 36rem);
+      aspect-ratio: 16 / 9;
+      margin-top: 1.6rem;
+      padding: .4rem;
+      border: 1px solid rgb(24 35 42 / 13%);
+      border-radius: 1.15rem;
+      background: rgb(255 255 255 / 70%);
+      box-shadow: 0 1rem 2.5rem rgb(24 35 42 / 10%);
+      overflow: hidden;
+      animation: rise .75s .22s ease-out both;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      border-radius: .8rem;
+    }
+
+    .video-panel {
+      width: 100%;
+      height: 100%;
+      align-self: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: rise .8s .22s ease-out both;
+    }
+
+    .video-panel .video-frame {
+      width: 100%;
+      margin-top: 0;
+    }
+
     .visual {
       aspect-ratio: 1;
       position: relative;
@@ -142,7 +184,8 @@
       animation: spin 24s linear infinite;
     }
 
-    .orbit::before, .orbit::after {
+    .orbit::before,
+    .orbit::after {
       content: "";
       position: absolute;
       border-radius: 50%;
@@ -182,21 +225,38 @@
       text-transform: uppercase;
     }
 
-    .status { color: var(--ink); }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(1.2rem); }
-      to { opacity: 1; transform: translateY(0); }
+    .status {
+      color: var(--ink);
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(1.2rem);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     @keyframes breathe {
-      50% { transform: scale(1.045) rotate(2deg); }
+      50% {
+        transform: scale(1.045) rotate(2deg);
+      }
     }
 
     @keyframes pulse {
-      50% { box-shadow: 0 0 0 .55rem rgb(255 180 60 / 5%); }
+      50% {
+        box-shadow: 0 0 0 .55rem rgb(255 180 60 / 5%);
+      }
     }
 
     @media (max-width: 760px) {
@@ -212,9 +272,13 @@
         padding: 1.4rem clamp(1.35rem, 6vw, 2.25rem);
       }
 
-      .page::before { inset: .55rem; }
+      .page::before {
+        inset: .55rem;
+      }
 
-      header { gap: .65rem; }
+      header {
+        gap: .65rem;
+      }
 
       .logo {
         width: 2.15rem;
@@ -233,7 +297,9 @@
         grid-row: 1;
       }
 
-      .eyebrow { margin-bottom: 1.1rem; }
+      .eyebrow {
+        margin-bottom: 1.1rem;
+      }
 
       h1 {
         max-width: 10ch;
@@ -247,6 +313,20 @@
         line-height: 1.6;
       }
 
+      .video-frame {
+        margin-top: 1.25rem;
+        padding: .3rem;
+        border-radius: .9rem;
+      }
+
+      .video-panel {
+        grid-row: auto;
+      }
+
+      .video-panel .video-frame {
+        margin-top: 0;
+      }
+
       footer {
         flex-direction: column;
         gap: .45rem;
@@ -254,46 +334,86 @@
     }
 
     @media (max-width: 390px) {
-      .page { padding-inline: 1.15rem; }
-      .page::before { display: none; }
-      header { font-size: .66rem; }
-      main { padding-top: 2rem; }
-      .visual { width: min(12rem, 58vw); }
-      h1 { font-size: clamp(2.8rem, 14.5vw, 3.5rem); }
-      .message { font-size: .95rem; }
-      footer { font-size: .63rem; }
+      .page {
+        padding-inline: 1.15rem;
+      }
+
+      .page::before {
+        display: none;
+      }
+
+      header {
+        font-size: .66rem;
+      }
+
+      main {
+        padding-top: 2rem;
+      }
+
+      .visual {
+        width: min(12rem, 58vw);
+      }
+
+      h1 {
+        font-size: clamp(2.8rem, 14.5vw, 3.5rem);
+      }
+
+      .message {
+        font-size: .95rem;
+      }
+
+      footer {
+        font-size: .63rem;
+      }
     }
 
     @media (max-height: 560px) and (orientation: landscape) {
-      .page { padding-block: 1rem; }
+      .page {
+        padding-block: 1rem;
+      }
+
       main {
-        grid-template-columns: minmax(0, 1fr) 10rem;
+        grid-template-columns: minmax(0, 1fr) minmax(17rem, .8fr);
         gap: 2rem;
         padding: 1.5rem 0;
       }
-      .visual {
+
+      .video-panel {
         grid-column: 2;
         grid-row: 1;
-        width: 9rem;
       }
-      h1 { font-size: clamp(2.7rem, 8vw, 4.5rem); }
+
+      h1 {
+        font-size: clamp(2.7rem, 8vw, 4.5rem);
+      }
+
       .message {
         margin-top: 1rem;
         font-size: .9rem;
         line-height: 1.45;
       }
-      .eyebrow { margin-bottom: .8rem; }
-      footer { flex-direction: row; }
+
+      .eyebrow {
+        margin-bottom: .8rem;
+      }
+
+      footer {
+        flex-direction: row;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
@@ -306,13 +426,18 @@
         <p class="eyebrow">Temporary interruption</p>
         <h1 id="page-title">We’ll be <em>right back.</em></h1>
         <p class="message">
-          Our website is currently unavailable due to a technical issue. Our team is already working on it and will have everything back up and running as soon as possible. Thank you for your patience.
+          Our website is currently unavailable due to a technical issue. Our team is already working on it and will have
+          everything back up and running as soon as possible. Thank you for your patience.
         </p>
       </section>
 
-      <div class="visual" aria-hidden="true">
-        <div class="orbit"></div>
-        <img class="logo-large" src="logo.png" alt="">
+      <div class="video-panel">
+        <div class="video-frame">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/bCdDagrm8c4?si=CbFz98r71Uhvyu8D"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
       </div>
     </main>
 
@@ -322,4 +447,5 @@
     </footer>
   </div>
 </body>
+
 </html>
